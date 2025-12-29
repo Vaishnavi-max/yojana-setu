@@ -101,12 +101,8 @@ open index.html
 # OR double-click index.html
 ```
 
-### Using Live Server (Optional)
-```bash
-# If you have VS Code Live Server extension
-# Right-click index.html → "Open with Live Server"
-```
-
+### Live Website
+https://vaishnavi-max.github.io/yojana-setu/
 ---
 
 ## 📂 Project Structure
