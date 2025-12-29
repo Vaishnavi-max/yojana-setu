@@ -168,8 +168,8 @@ Get your free API key: [Google AI Studio](https://aistudio.google.com/)
 
 | Welcome Screen | Search Results |
 |----------------|----------------|
-| <img width="1510" height="810" alt="image" src="https://github.com/user-attachments/assets/f3fc8086-b09d-445b-b51e-3882cfd55cac" />
- | <img width="1520" height="824" alt="image" src="https://github.com/user-attachments/assets/90cc1f6e-c0b3-4176-9ec8-c674c61ba0f4" />
+| <img width="1510" height="810" alt="image" src="https://github.com/user-attachments/assets/f3fc8086-b09d-445b-b51e-3882cfd55cac" />| <img width="1520" height="824" alt="image" src="https://github.com/user-attachments/assets/90cc1f6e-c0b3-4176-9ec8-c674c61ba0f4" />
+ |
  |
 
 ---
