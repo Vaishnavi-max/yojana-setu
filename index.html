@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇮🇳 Yojana Setu - Government Scheme Eligibility Chatbot</title>
+    <meta name="description"
+        content="Find government welfare schemes you are eligible for in India. AI-powered chatbot for scheme recommendations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🇮🇳</span>
+                <div class="logo-text">
+                    <h1>Yojana Setu</h1>
+                    <p>Your Government Scheme Guide</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-value" id="schemeCount">3401</span>
+                    <span class="stat-label">Schemes</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <div id="chatMessages">
+                <!-- Welcome Message -->
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <h3>Namaste! 🙏 Welcome to Yojana Setu</h3>
+                            <p>I can help you find government welfare schemes you might be eligible for.</p>
+                            <p><strong>Tell me about yourself:</strong></p>
+                            <ul>
+                                <li>Your age, gender, occupation</li>
+                                <li>Income level, location (state)</li>
+                                <li>Category (SC/ST/OBC/General)</li>
+                                <li>Any specific needs (farmer, student, senior citizen, etc.)</li>
+                            </ul>
+                            <p class="example-text">💡 <em>Example: "I am a 25 year old female farmer from Maharashtra
+                                    with 2 acres of land and annual income of 1.5 lakh"</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions -->
+            <div class="quick-suggestions" id="quickSuggestions">
+                <button class="suggestion-chip" data-query="I am a farmer">👨‍🌾 Farmer</button>
+                <button class="suggestion-chip" data-query="I am a woman">👩 Woman</button>
+                <button class="suggestion-chip" data-query="I am a student">🎓 Student</button>
+                <button class="suggestion-chip" data-query="I am unemployed">💼 Unemployed</button>
+                <button class="suggestion-chip" data-query="I am a senior citizen">👴 Senior Citizen</button>
+                <button class="suggestion-chip" data-query="I am from SC/ST community">🏛️ SC/ST</button>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <div class="input-container">
+                <textarea id="userInput"
+                    placeholder="Tell me about yourself... (e.g., I am a 20 year old farmer with 2 acres land)"
+                    rows="1"></textarea>
+                <button id="sendBtn" class="send-btn" disabled>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" />
+                    </svg>
+                </button>
+            </div>
+            <p class="disclaimer">Press Enter to send</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p class="loading-text">Finding schemes for you...</p>
+        </div>
+    </div>
+
+    <script src="data/all_schemes.js"></script>
+    <script src="src/user_parser.js"></script>
+    <script src="src/eligibility_engine.js"></script>
+    <script src="src/gemini_integration.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

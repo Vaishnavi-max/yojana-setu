@@ -1,0 +1,186 @@
+========================================
+  YOJANA SETU - DEBUGGING TEST SUITE  
+========================================
+
+STEP 1: VERIFYING DATA FILES
+----------------------------------------
+✅ all_schemes.js loaded: 3400 schemes
+✅ priority_schemes.js loaded: 100 schemes
+✅ Data structure correct - all required fields present
+
+📄 Sample Scheme (ID: 1):
+   Name: Immediate Relief Assistance" under "Welfare and Relief for F...
+   Level: State
+   Category: Agriculture,Rural & Environment, Social welfare & Empowerment
+
+
+STEP 2: LOADING MODULES
+----------------------------------------
+✅ UserParser loaded
+✅ EligibilityEngine loaded
+
+
+STEP 3: TESTING USER PARSER
+----------------------------------------
+
+Test 1: "I am a 25 year old female farmer from Maharashtra with 2 acres land and income of 1.5 lakh"
+  ✅ age: 25
+  ✅ gender: female
+  ✅ occupation: farmer
+  ✅ state: maharashtra
+  📊 Detail Level: detailed
+  📋 Extracted Fields: [age, gender, occupation, income, state, land]
+
+Test 2: "I am a woman"
+  ✅ gender: female
+  📊 Detail Level: ambiguous
+  📋 Extracted Fields: [gender]
+
+Test 3: "I am a 65 year old SC widow from Bihar BPL"
+  ✅ age: 65
+  ✅ caste: sc
+  ✅ isWidow: true
+  ✅ state: bihar
+  ✅ isBPL: true
+  📊 Detail Level: detailed
+  📋 Extracted Fields: [age, gender, income, caste, state, widow, senior, bpl]
+
+Test 4: "unemployed youth 22 years from Rajasthan"
+  ✅ age: 22
+  ✅ occupation: unemployed
+  ✅ state: rajasthan
+  📊 Detail Level: partial
+  📋 Extracted Fields: [age, occupation, state]
+
+Test 5: "disabled student from Kerala"
+  ✅ occupation: student
+  ✅ state: kerala
+  ✅ isDisabled: true
+  📊 Detail Level: partial
+  📋 Extracted Fields: [occupation, state, disability]
+
+🏆 Parser Tests: 5/5 passed
+
+
+STEP 4: TESTING ELIGIBILITY ENGINE
+----------------------------------------
+
+Test Profile: 25 years old, female, farmer, from maharashtra, income ₹1.5 lakh, 2 acres land
+
+📌 Found 10 eligible schemes:
+
+1. National Food Security Mission NFSM...
+   🎯 Match: 75% | Score: 120/200
+   ✓ Matched: [occupation, income, state, land]
+   💡 Reasons: Related to farmer (3 matching terms); For economically weaker sections
+
+2. National Startup Awards...
+   🎯 Match: 75% | Score: 120/200
+   ✓ Matched: [occupation, age, income, state]
+   💡 Reasons: Related to farmer (2 matching terms); Age 25 meets minimum 3 years
+
+3. Pradhan Mantri Matru Vandana Yojana...
+   🎯 Match: 75% | Score: 120/200
+   ✓ Matched: [occupation, age, income, state]
+   💡 Reasons: Related to farmer (2 matching terms); Age 25 meets minimum 19 years
+
+4. Pradhan Mantri Matsya Sampada Yojana...
+   🎯 Match: 75% | Score: 120/200
+   ✓ Matched: [occupation, income, state, land]
+   💡 Reasons: Related to farmer (3 matching terms); For economically weaker sections
+
+5. Sub-mission On Agriculture Mechanization...
+   🎯 Match: 75% | Score: 120/200
+   ✓ Matched: [occupation, income, state, land]
+   💡 Reasons: Related to farmer (3 matching terms); For economically weaker sections
+
+6. Pradhan Mantri Garib Kalyan Anna Yojana...
+   🎯 Match: 70% | Score: 110/200
+   ✓ Matched: [occupation, income, state, land]
+   💡 Reasons: Related to farmer (2 matching terms); For economically weaker sections
+
+
+
+STEP 5: VERIFYING PRIORITY SCHEMES
+----------------------------------------
+Priority schemes by category:
+  agriculture: 10 schemes
+  women: 10 schemes
+  healthcare: 10 schemes
+  education: 10 schemes
+  employment: 10 schemes
+  financial: 10 schemes
+  senior_citizen: 10 schemes
+  sc_st: 10 schemes
+  disability: 10 schemes
+  housing: 10 schemes
+
+
+STEP 6: TESTING DIFFERENT USER PROFILES
+----------------------------------------
+
+🔍 "I am a 30 year old farmer from Punjab"
+   Profile: 30 years old, farmer, from punjab
+   Top matches (3 found):
+   1. Agri-Clinics And Agri-Business Centres Scheme... (60%)
+   2. Agricultural Extension... (60%)
+
+🔍 "I am a woman entrepreneur from Gujarat"
+   Profile: female, entrepreneur, from gujarat
+   Top matches (3 found):
+   1. AICTE-LILAVATI AWARD... (40%)
+   2. Agriculture And Processed Foods Export Promotion S... (40%)
+
+🔍 "I am an SC student from Uttar Pradesh"
+   Profile: student, SC, from uttar pradesh
+   Top matches (3 found):
+   1. AICTE-Margdarshan scheme... (60%)
+   2. CIFE - Institutional Fellowship... (60%)
+
+🔍 "I am a 70 year old senior citizen widow"
+   Profile: 70 years old, female, Widow, Senior citizen
+   Top matches (3 found):
+   1. Abhayakiranam Scheme-Financial Assistance To Desti... (45%)
+   2. Ashirwad... (45%)
+
+🔍 "I am a disabled person from Tamil Nadu"
+   Profile: from tamil nadu, Person with disability
+   Top matches (3 found):
+   1. AICTE – Saksham Scholarship Scheme For Specially-A... (25%)
+   2. AICTE – Saksham Scholarship Scheme For Specially-A... (25%)
+
+
+STEP 7: KEYWORD COVERAGE ANALYSIS
+----------------------------------------
+Schemes matching each category:
+  farmer     ███░░░░░░░░░░░░░░░░░ 568 (16.7%)
+  women      ████░░░░░░░░░░░░░░░░ 710 (20.9%)
+  student    ███████░░░░░░░░░░░░░ 1116 (32.8%)
+  senior     ██░░░░░░░░░░░░░░░░░░ 383 (11.3%)
+  disabled   ██░░░░░░░░░░░░░░░░░░ 392 (11.5%)
+  sc_st      ███░░░░░░░░░░░░░░░░░ 487 (14.3%)
+  bpl        ██░░░░░░░░░░░░░░░░░░ 285 (8.4%)
+
+
+STEP 8: TESTING AMBIGUOUS QUERY HANDLING
+----------------------------------------
+
+Query: "I am a woman"
+Detail Level: ambiguous
+Extracted: [gender]
+
+Quick Filter Results (5 schemes):
+1. Immediate Relief Assistance" under "Welfare and Re...
+   Match: 25% | Reasons: For women
+2. Indira Mahila Shakti Udyam Protsahan Yojana...
+   Match: 25% | Reasons: For women
+3. Capital Investment Subsidy (for New and Existing I...
+   Match: 25% | Reasons: For women
+4. Capital Investment Subsidy: SC/ST/Women Entreprene...
+   Match: 25% | Reasons: For women
+5. Immediate Death Relief Assistance" under "Welfare ...
+   Match: 25% | Reasons: For women
+
+========================================
+  ✅ DEBUGGING COMPLETE  
+========================================

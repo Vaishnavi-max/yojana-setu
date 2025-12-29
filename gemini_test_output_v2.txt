@@ -1,0 +1,22 @@
+========================================
+  GEMINI API INTEGRATION TEST  
+========================================
+
+✅ Loaded dependencies
+   - 3400 schemes
+   - UserParser ready
+   - EligibilityEngine ready
+
+TEST 1: Basic API Connection
+----------------------------------------
+❌ API Error: 429
+   Error details: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a
+
+⚠️ Skipping remaining tests due to API connection failure
+
+========================================
+  ✅ GEMINI INTEGRATION TEST COMPLETE  
+========================================
